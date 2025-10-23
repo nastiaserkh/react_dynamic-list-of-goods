@@ -9,13 +9,13 @@ export function getAll(): Promise<Good[]> {
       return response.json();
     }
 
-    throw new Error('Failed to fetch users');
+    throw new Error('Failed to fetch goods');
   });
 }
 
 export const get5First = () => {
   return getAll().then(goods =>
-    goods.sort((a, b) => a.name.localeCompare(b.name)).slice(0, 5),
+    [...goods].sort((a, b) => a.name.localeCompare(b.name)).slice(0, 5),
   ); // sort and get the first 5
 };
 
